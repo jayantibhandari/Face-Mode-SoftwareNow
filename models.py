@@ -1,4 +1,8 @@
 # models.py
+# Models for text-to-image generation and visual question answering.
+# This file contains two main classes:
+# - TextToImageModel: generates answers based on text prompts and images
+# - ImageClassifierModel: performs visual question answering
 from transformers import pipeline, AutoProcessor, AutoModelForVisualQuestionAnswering
 from PIL import Image
 import torch
@@ -16,6 +20,17 @@ class TextToImageModel:
 
     def predict(self, image_path, question):
         # Hugging Face pipeline accepts {"type": "image", "image": <PIL.Image>}
+
+        
+        # Generate an answer for a given image and question.
+
+        # Args:
+        #     image_path (str): Path to the input image.
+        #     question (str): The question to ask about the image.
+
+        # Returns:
+        #     str: The generated answer text.
+        
         image = Image.open(image_path)
         messages = [
             {
@@ -47,9 +62,11 @@ class ImageClassifierModel:
 
     def predict(self, image_path, question):
         image = Image.open(image_path)
+        # Encode image + text into tensors
         inputs = self.processor(images=image, text=question, return_tensors="pt")
         with torch.no_grad():
             outputs = self.model(**inputs)
+        # Decode predicted answer
         answer = self.processor.decode(outputs.logits.argmax(-1))
         return answer
 
