@@ -1,3 +1,4 @@
+# trail model which was we learned through instrcutions
 from transformers import pipeline
 
 # Use BLIP image captioning model (small and open access)
