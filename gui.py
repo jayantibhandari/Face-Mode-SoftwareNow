@@ -1,3 +1,10 @@
+
+# Group Name: SYDN 01
+# Members:  
+# - [Jayanti Bhandari] (SID: S395595)  
+# - [Jyoti Adhikari] (SID: S395089)  
+# - [Ruhi Rayamajhi] (SID: S396926)  
+
 import tkinter as tk
 from tkinter import filedialog
 from PIL import Image
