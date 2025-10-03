@@ -41,7 +41,7 @@ class ImageToTextGUI(tk.Tk):
             text="No image selected",
             fg="white",
             bg="black",
-            wraplength=500
+            wraplength=400
         )
         self.selected_image_label.pack(pady=5)
 
@@ -83,7 +83,7 @@ class ImageToTextGUI(tk.Tk):
         # Output label
         self.output_label = tk.Label(
             self,
-            text="Answer will appear here",
+            text="Please wait!! Answer will appear here",
             fg="white",
             bg="black",
             wraplength=500,
@@ -95,7 +95,7 @@ class ImageToTextGUI(tk.Tk):
     # FUNCTIONS
     # ----------------------------
     def browse_image(self):
-        """Browse for a local image file."""
+        """Browse a image file."""
         file_path = filedialog.askopenfilename(
             filetypes=[("Image files", "*.jpg *.jpeg *.png *.bmp")]
         )
@@ -106,7 +106,7 @@ class ImageToTextGUI(tk.Tk):
     def run_image_to_text(self):
         """Run the Image-to-Text model."""
         if not self.image_path:
-            self.output_label.config(text="Please select an image first.")
+            self.output_label.sconfig(text="Please select an image first.")
             return
 
         question = self.entry_question.get().strip()
@@ -171,7 +171,7 @@ class ImageToTextGUI(tk.Tk):
 
 
 # ----------------------------
-# MAIN
+# MAIN file to run
 # ----------------------------
 if __name__ == "__main__":
     app = ImageToTextGUI()
